@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ListToDo.Models.ToDo>
+
+@{
+    Layout = null;
+}
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ListToDo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Wyloguj</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<div class=" container p-3">
+    <div class=" row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Twoja lista zadań</h2>
+        </div>
+        <div class="col-6 text-right">          
+               <a asp-controller="Task" asp-action="Create"  class="btn btn-primary">Stwórz nowe zadanie</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Data
+                    </th>
+                    <th>
+                        Zadanie
+                    </th>
+                    <th>
+                        Operacje
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var task in Model)
+                {
+                    
+
+                    <tr>
+
+                        <td width="35%">@task.DateAddition</td>
+                        <td width="35%">@task.Task</td>                                                                                                               
+                        <td width="50%">
+                                <div class="w-100 btn-group" role="group">
+                                    <a asp-controller="Task" asp-action="Update" asp-route-Id="@task.Id" class="btn btn-primary mx-1">Edytuj</a>                                  
+                                    <a asp-controller="Task" asp-action="Delete" asp-route-Id="@task.Id" class="btn btn-danger mx-1">Usuń</a>
+                                </div>
+                            </td>
+
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>No items created yet</p>
+    }
+
+</div>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+<script type="text/javascript">
+
+    //Disable Back Button In All Browsers.
+    function DisableBackButtonAllBrowsers() {
+        window.history.forward()
+    };
+    DisableBackButtonAllBrowsers();
+    window.onload = DisableBackButtonAllBrowsers;
+    window.onpageshow = function (evts) { if (evts.persisted) DisableBackButtonAllBrowsers(); };
+    window.onunload = function () { void (0) };
+</script>
+

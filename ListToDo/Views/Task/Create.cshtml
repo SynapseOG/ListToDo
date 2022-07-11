@@ -1,0 +1,55 @@
+﻿@model ListToDo.Models.CreateTaskDto
+@{
+    Layout = null;
+}
+
+<form method="post" asp-action="Create">
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Stwórz zadanie</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Task"></label>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="DateAddition"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input asp-for="Task" class="form-control" />
+                        <span asp-validation-for="Task" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for="DateAddition" class="form-control" />
+                        <span asp-validation-for="DateAddition" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Stwórz" />
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-danger w-75" asp-action="TaskIndex">Powrót</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />

@@ -1,0 +1,82 @@
+﻿@model ListToDo.Models.User
+
+@{
+    Layout = null;
+}
+
+<link href="~/css/RegisterStyle.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<form class="form" method="post" asp-action="Create">
+
+        
+    <div class="container2">
+            <h2 class="heder">Rejestracja</h2>
+        
+        <div class="inputs">    
+            <input   asp-for="UserName" type="text" placeholder="Podaj nazwę">
+            <input   asp-for="Email"  type="email" placeholder="Wprowadź email">     
+            <input  id="pass" asp-for="Password" type="password" placeholder="Wprowadź hasło">
+            <input   id="pass-repeat" type="password" placeholder="Powtórz hasło" >
+            
+        </div>
+
+        <div class="form-group row">
+            <div class="row-8 offset-2 col">
+                <div> 
+                    <input id="button" type="submit" class="btn btn-info w-75 " value="Create" />
+                </div>
+                <div>
+                    <a class="btn btn-danger w-75" asp-controller="Home" asp-action="Index">Back</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+            
+       
+            var pass = document.getElementById('pass');
+            var passRepeat = document.getElementById('pass-repeat');
+
+        var button = document.getElementById('button');
+        button.addEventListener('click', function (e) {
+            if (pass.value != passRepeat.value) {
+                e.preventDefault();
+                alert("Podane hasła są rózne")
+            }
+            else {
+                e.target.submit();
+            }
+
+        });
+
+
+
+
+
+        //const form = document.querySelector("form");
+        //const inputPass = form.querySelector("input[name=Password]");
+        //const inputPassRepeat = form.querySelector("input[name=pass-repeat]");
+        //const formMessege = form.querySelector(".form-message");
+
+        //formR.addEventListener("submit", e => {
+
+        //    if (inputPass.value == inputPassRepeat.value) {
+        //        e.target.submit();
+
+        //    }
+        //    else {
+        //        formMessege.innerHTML = `Podane hasła są różne!`;
+        //    }
+
+        //});
+
+
+    </script>
+
+</form>
+

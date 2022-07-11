@@ -1,0 +1,40 @@
+﻿@model ListToDo.Models.User
+
+@{
+    Layout = null;
+}
+<link href="~/css/RegisterStyle.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<form  method="post" asp-action="UserLogin">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="container2">
+        <h2 class="heder">Logowanie</h2>
+
+        <div class="inputs">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+            <input asp-for="UserName" type="text" placeholder="Podaj nazwę">
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input id="pass" asp-for="Password" type="password" placeholder="Wprowadź hasło">
+            
+
+        </div>
+
+        <div class="form-group row">
+            <div class="row-8 offset-2 col">
+                <div>
+                    <input id="button" type="submit" class="btn btn-info w-75 " value="Create" />
+                </div>
+                <div>
+                    <a class="btn btn-danger w-75" asp-controller="Home" asp-action="Index">Back</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>
+
